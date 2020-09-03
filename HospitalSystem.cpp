@@ -1,4 +1,5 @@
 #include<stdio.h>
+int SumProfit=0;//医院的总营业额
 struct MedicalRecords
 {
     PatientInformation paIn;
@@ -135,18 +136,8 @@ void quickdelete(MedicalRecords* temp)
     t->next=temp->next;
     temp->next->before=t;
 }
-
-void checkDepartment()
+void showRecordsAccordingtoDepartment()
 {
-    printf("您是否清楚所要查询的科室名称？True（输入1） False（输入0）\n");
-    int tag=0;
-    scanf("%d",&tag);
-    if(tag==0)
-    {
-        printf("已经为您准备好科室名称\n");
-        for(int i=0;i<countDepart;i++)
-            printf("%s\n",RealDepartment[i]);
-        printf("请输入您要查询的科室名称:\n");
         char name[30];
         scanf("%s",name);
         MedicalRecords* t=records;
@@ -159,19 +150,19 @@ void checkDepartment()
             if(t->doIn.department==name)
             {
                 // 打印诊疗信息
-                if(tag==1)
+                if(tagofrecords==1)
                 {
                     printf("%s %d %s %d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
                 }
-                else if(tag==2)
+                else if(tagofrecords==2)
                 {
                     printf("%s %d %d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
                 }
-                else if(tag==3)
+                else if(tagofrecords==3)
                 {
                     // 输出诊疗情况
                 }
-                else if(tag==4)
+                else if(tagofrecords==4)
                 {
                     printf("%s %d %s %d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
                     printf("%s %d %d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
@@ -179,13 +170,82 @@ void checkDepartment()
                 }
             }
         }
-        
+}
+void checkDepartment() // 按科室检索诊疗信息
+{
+    printf("您是否清楚所要查询的科室名称？True（输入1） False（输入0）\n");
+    int tag=0;
+    scanf("%d",&tag);
+    if(tag==0)
+    {
+        printf("已经为您准备好科室名称\n");
+        for(int i=0;i<countDepart;i++)
+            printf("%s\n",RealDepartment[i]);
+        printf("请输入您要查询的科室名称:\n"); 
+        showRecordsAccordingtoDepartment();       
     }
     else
     {
-        
+        showRecordsAccordingtoDepartment();
     }
     
+}
+
+void showDoctor(int inID)
+{
+    MedicalRecords* t=records;
+    printf("请输入您需要打印的信息：\n");
+    printf("1:医生信息\n2:患者信息\n3:诊疗情况\n4:全部信息\n");
+    int tagofrecords=0;
+    scanf("%d",&tagofrecords);
+    while(t->next!=NULL)
+    {
+        if(t->doIn.ID==inID)
+        {
+            // 打印诊疗信息
+                if(tagofrecords==1)
+                {
+                    printf("%s %d %s %d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
+                }
+                else if(tagofrecords==2)
+                {
+                    printf("%s %d %d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
+                }
+                else if(tagofrecords==3)
+                {
+                    // 输出诊疗情况
+                }
+                else if(tagofrecords==4)
+                {
+                    printf("%s %d %s %d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
+                    printf("%s %d %d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
+                    // 输出诊疗情况
+                }
+        }
+    }
+}
+//打印某位患者的历史诊疗信息
+void showPatientInformation(PatientInformation patient)//? 历史记录？
+{
+    MedicalRecords* t=records;
+    while(t->next!=NULL)
+    {
+        if(t->paIn==patient)
+        {
+            printf("%s %d %d\n",t->doIn.name,t->mdIn.prmd.SumDrugCost,t->mdIn.hosp.deposit);
+        }
+    }
+}
+
+// 统计医院目前的营业额
+void showProfit()
+{
+    printf("医院目前的营业额为：%d 元");
+}
+// 生成目前住院患者表 
+void showPatient()
+{
+
 }
 int main()
 {
@@ -202,7 +262,16 @@ int main()
     //3.能够随时删除 1 条诊疗记录。
     quickdelete(t);
     //4. 能够按照合理顺序打印某个科室的诊疗信息（按照科室检索）
-
-
-
+    checkDepartment();
+    //5 能够按照合理顺序打印某位医生的诊疗信息（按照医生的工号检索）
+    int ID=0;
+    showDoctor(ID);
+    //6 能够按照合理顺序打印某位患者的历史诊疗信息（按照患者的相关信息检索）
+    PatientInformation temp;
+    showPatientInformation(temp);
+    //7 能够统计医院目前的营业额（检查费用+药品费用+住院费用，不含住院押金）；能够生成目前的住院患者报表。【重点考察】
+    showProfit();
+    showPatient();
+    //8 能够统计每位医生的出诊情况和工作繁忙程度。
+    //9 【某段时间范围】能够打印某段时间范围内的所有诊疗信息。【重点考察】
 }
