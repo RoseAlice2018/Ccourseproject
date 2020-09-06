@@ -1,5 +1,10 @@
 #include<stdio.h>
+#include"Hospital.h"
 int SumProfit=0;//医院的总营业额
+int countDepart=0;// department数量
+MedicalRecords* records;
+MedicalRecords* pointer=records;
+depart RealDepartment[30];
 struct MedicalRecords
 {
     PatientInformation paIn;
@@ -8,14 +13,12 @@ struct MedicalRecords
     MedicalRecords* before;
     MedicalRecords* next;
 };
-MedicalRecords* records;
-MedicalRecords* pointer=records;
 struct depart
 {
     char name[30];// name of the department
 };
-int countDepart=0;
-depart RealDepartment[30];
+
+
 void insertDepartment(char insertname[30])
 {
     for(int i=0;i<countDepart;i++)
@@ -28,62 +31,7 @@ void insertDepartment(char insertname[30])
     RealDepartment[countDepart].name=insertname;
     countDepart++;
 }
-struct PatientInformation
-{
-    char name[30];// name of the patient
-    int age;    // age of the patient (1-140)
-    int ID;     // ID of the patient (Uniqueness)
-};
 
-struct DoctorInformation
-{
-    char name[30];// name of the doctor
-    int  level; //level of the doctor
-    char department[30]; //department of the doctor
-    int ID;     //ID of the doctor(Uniqueness)
-    int date[8];   // doctor at work
-};
-
-struct MedicalInformation
-{
-    Examination exam;
-    Prescribemedicine prmd;
-    Hospitalized hosp;
-};
-
-struct Examination
-{
-    int SumCost; // sum cost of the examination
-    int cost;   // 
-};
-
-struct Prescribemedicine
-{
-    int SumDrugCost; // sum cost of the drug Cost
-    Drug  drug[40];  // category of drug
-};
-
-struct Drug
-{
-    char name[40]; // name of the drug
-    int UnitPrice; // unit price 
-    int Number;     // number of the drug
-};
-
-struct Hospitalized 
-{
-    Date beginDate;
-    Date leaveDate;
-    int  deposit;   
-};
-
-struct Date
-{
-    int month;
-    int day;
-    int hour;
-    int minute;
-};
 void AddMedicalRecords()
 {
     printf("请问，选择从文件读入诊疗记录请输入1，选择手动输入诊疗记录请输入2：\n");
@@ -273,5 +221,6 @@ int main()
     showProfit();
     showPatient();
     //8 能够统计每位医生的出诊情况和工作繁忙程度。
+    
     //9 【某段时间范围】能够打印某段时间范围内的所有诊疗信息。【重点考察】
 }
