@@ -82,6 +82,14 @@ void AddMedicalRecords()
         scanf("%d/%d/%d/%d %d/%d/%d/%d %d",&temp->mdIn.hosp.beginDate.month,&temp->mdIn.hosp.beginDate.day
         ,&temp->mdIn.hosp.beginDate.hour,&temp->mdIn.hosp.beginDate.minute,&temp->mdIn.hosp.leaveDate.month,
         &temp->mdIn.hosp.leaveDate.day,&temp->mdIn.hosp.leaveDate.hour,&temp->mdIn.hosp.leaveDate.minute,&temp->mdIn.hosp.deposit);
+        if(temp->mdIn.hosp.deposit<temp->mdIn.hosp.leaveDate)
+        {
+            printf("您的押金不足");
+        }
+        else if(temp->mdIn.hosp.deposit<temp->mdIn.hosp.deposit)
+        {
+            printf("您的押金低于最低标准");
+        } 
         //将当前记录链入表中
         pointer=temp;
         pointer=pointer->next;
@@ -218,6 +226,19 @@ void showPatient()
 }
 int main()
 {
+    while(1)
+    {
+        printf("1:读入记录\n\t");
+        printf("2:修改诊疗记录\n\t");
+        printf("3:删除诊疗记录\n\t");
+        printf("4:按科室检索诊疗信息\n\t");
+        printf("5:按医生的工号检索信息\n\t");
+        printf("6:按患者信息检索信息\n\t");
+        printf("7:统计营业额并生成住院患者报表\n\t");
+        printf("8:统计每位医生的出诊情况和工作繁忙程度\n\t");
+        printf("9:能够打印某段时间范围内的所有诊疗信息\n\t");
+        printf("10:将当前系统中的所有信息保存到文件中\n\t");
+    }
     //0 System begin
     //1. 能够从文件中录入多条诊疗记录，也能够随时录入 1 条诊疗记录。
     //注意：需要考虑各种类型的不规范、不合理或错误数据，如：数据位数不对、格
