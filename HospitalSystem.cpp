@@ -142,28 +142,63 @@ void showRecordsAccordingtoDepartment()
         printf("1:医生信息\n2:患者信息\n3:诊疗情况\n4:全部信息\n");
         int tagofrecords=0;
         scanf("%d",&tagofrecords);
+        int countCheck=1;//记录当前是第i条记录
         while (t->next!=NULL)
         {
+            printf("当前是第%d条记录:\n",countCheck);
             if(t->doIn.department==name)
             {
                 // 打印诊疗信息
                 if(tagofrecords==1)
                 {
-                    printf("%s %d %s %d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
+                    printf("医生姓名：%s 医生级别：%d 医生所属部门：%s 医生工号：%d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
+                    //打印出诊时间
+                    printf("医生出诊时间：")
+                    for(int i=1;i<=7;i++)
+                    {
+                        if(t->doIn.date[i]==1)
+                        {
+                            printf("%d ",i);
+                        }
+                    }
+                    printf("\n");
                 }
                 else if(tagofrecords==2)
                 {
-                    printf("%s %d %d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
+                    printf("患者姓名：%s 患者年龄：%d 患者ID：%d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
                 }
                 else if(tagofrecords==3)
                 {
                     // 输出诊疗情况
+                    printf("检查总花费：%d\n",t->mdIn.exam.SumCost);
+                    printf("药物总花费: %d\n",t->mdIn.prmd.SumDrugCost);
+                    printf("住院开始日期：%d/%d/%d/%d\n",t->mdIn.hosp.beginDate.month,t->mdIn.hosp.beginDate.day,t->mdIn.hosp.beginDate.hour,t->mdIn.hosp.beginDate.minute);
+                    printf("住院预期结束日期: %d/%d/%d/%d\n",t->mdIn.hosp.leaveDate.month,t->mdIn.hosp.leaveDate.day,t->mdIn.hosp.leaveDate.hour,t->mdIn.hosp.leaveDate.minute);
+
                 }
                 else if(tagofrecords==4)
                 {
-                    printf("%s %d %s %d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
-                    printf("%s %d %d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
+                    //1
+                    printf("医生姓名：%s 医生级别：%d 医生所属部门：%s 医生工号：%d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
+                    //打印出诊时间
+                    printf("医生出诊时间：")
+                    for(int i=1;i<=7;i++)
+                    {
+                        if(t->doIn.date[i]==1)
+                        {
+                            printf("%d ",i);
+                        }
+                    }
+                    printf("\n");
+                    //2
+                    printf("患者姓名：%s 患者年龄：%d 患者ID：%d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
+                    //3
                     // 输出诊疗情况
+                    printf("检查总花费：%d\n",t->mdIn.exam.SumCost);
+                    printf("药物总花费: %d\n",t->mdIn.prmd.SumDrugCost);
+                    printf("住院开始日期：%d/%d/%d/%d\n",t->mdIn.hosp.beginDate.month,t->mdIn.hosp.beginDate.day,t->mdIn.hosp.beginDate.hour,t->mdIn.hosp.beginDate.minute);
+                    printf("住院预期结束日期: %d/%d/%d/%d\n",t->mdIn.hosp.leaveDate.month,t->mdIn.hosp.leaveDate.day,t->mdIn.hosp.leaveDate.hour,t->mdIn.hosp.leaveDate.minute);
+
                 }
             }
         }
@@ -244,6 +279,21 @@ void showPatient()
 {
 
 }
+//根据输入的ID，返回第ID条诊疗记录
+MedicalRecords* getMedicalReocrds(int ID)
+{
+    MedicalRecords* head=records;
+    while(ID--)
+    {
+        head=head->next;
+        if(head==NULL)
+        {
+            printf("您所需要的诊疗记录并不存在，请重新输入:\n");
+            return NULL;
+        }
+    }
+    return head;
+}
 int main()
 {
     while(1)
@@ -279,23 +329,47 @@ int main()
             //2 .能够随时修改 1 条诊疗记录。按照财务规范，如需修改错误的诊 疗记录，
             //应将当前错误的诊疗记录予以撤销后，再补充添加正确的诊疗记录。【重
             // 点考察】
-            MedicalRecords* t;
+            printf("请输入您所需要修改的诊疗记录的ID：\n");
+            int ID;
+            scanf("%d",&ID);
+            MedicalRecords* t=getMedicalReocrds(ID);
+            //如果用户输入的ID为错误的ID
+            while(t==NULL)
+            {
+                int ID;
+                scanf("%d",&ID);
+                 MedicalRecords* t=getMedicalReocrds(ID);
+            }
+            //删除并添加诊疗记录
             deleteRecords(t);
         }
         else if(code==3)
         {
              //3.能够随时删除 1 条诊疗记录。
-                quickdelete(t);
+            printf("请输入您所需要修改的诊疗记录的ID：\n");
+            int ID;
+            scanf("%d",&ID);
+            MedicalRecords* t=getMedicalReocrds(ID);
+            //如果用户输入的ID为错误的ID
+            while(t==NULL)
+            {
+                int ID;
+                scanf("%d",&ID);
+                 MedicalRecords* t=getMedicalReocrds(ID);
+            }
+             quickdelete(t);
         }
         else if(code==4)
         {
             //4. 能够按照合理顺序打印某个科室的诊疗信息（按照科室检索）
-                checkDepartment();
+            checkDepartment();
         }
         else if(code==5)
         {
             //5 能够按照合理顺序打印某位医生的诊疗信息（按照医生的工号检索）
+            printf("请输入您想要查询的医生的ID：\n");
             int ID=0;
+            scanf("%d",&ID);
             showDoctor(ID);
         }
         else if(code==6)
