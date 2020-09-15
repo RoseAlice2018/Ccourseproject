@@ -237,32 +237,65 @@ void showDoctor(int inID)
             // 打印诊疗信息
                 if(tagofrecords==1)
                 {
-                    printf("%s %d %s %d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
+                    printf("医生姓名：%s 医生级别：%d 医生所属部门：%s 医生工号：%d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
+                    //打印出诊时间
+                    printf("医生出诊时间：")
+                    for(int i=1;i<=7;i++)
+                    {
+                        if(t->doIn.date[i]==1)
+                        {
+                            printf("%d ",i);
+                        }
+                    }
+                    printf("\n");
                 }
                 else if(tagofrecords==2)
                 {
-                    printf("%s %d %d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
+                    printf("患者姓名：%s 患者年龄：%d 患者ID：%d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
                 }
                 else if(tagofrecords==3)
                 {
                     // 输出诊疗情况
+                    printf("检查总花费：%d\n",t->mdIn.exam.SumCost);
+                    printf("药物总花费: %d\n",t->mdIn.prmd.SumDrugCost);
+                    printf("住院开始日期：%d/%d/%d/%d\n",t->mdIn.hosp.beginDate.month,t->mdIn.hosp.beginDate.day,t->mdIn.hosp.beginDate.hour,t->mdIn.hosp.beginDate.minute);
+                    printf("住院预期结束日期: %d/%d/%d/%d\n",t->mdIn.hosp.leaveDate.month,t->mdIn.hosp.leaveDate.day,t->mdIn.hosp.leaveDate.hour,t->mdIn.hosp.leaveDate.minute);
+
                 }
                 else if(tagofrecords==4)
                 {
-                    printf("%s %d %s %d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
-                    printf("%s %d %d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
+                    //1
+                    printf("医生姓名：%s 医生级别：%d 医生所属部门：%s 医生工号：%d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
+                    //打印出诊时间
+                    printf("医生出诊时间：")
+                    for(int i=1;i<=7;i++)
+                    {
+                        if(t->doIn.date[i]==1)
+                        {
+                            printf("%d ",i);
+                        }
+                    }
+                    printf("\n");
+                    //2
+                    printf("患者姓名：%s 患者年龄：%d 患者ID：%d\n",t->paIn.name,t->paIn.age,t->paIn.ID);
+                    //3
                     // 输出诊疗情况
+                    printf("检查总花费：%d\n",t->mdIn.exam.SumCost);
+                    printf("药物总花费: %d\n",t->mdIn.prmd.SumDrugCost);
+                    printf("住院开始日期：%d/%d/%d/%d\n",t->mdIn.hosp.beginDate.month,t->mdIn.hosp.beginDate.day,t->mdIn.hosp.beginDate.hour,t->mdIn.hosp.beginDate.minute);
+                    printf("住院预期结束日期: %d/%d/%d/%d\n",t->mdIn.hosp.leaveDate.month,t->mdIn.hosp.leaveDate.day,t->mdIn.hosp.leaveDate.hour,t->mdIn.hosp.leaveDate.minute);
+
                 }
         }
     }
 }
 //打印某位患者的历史诊疗信息
-void showPatientInformation(PatientInformation patient)//? 历史记录？
+void showPatientInformation(const int ID)//? 历史记录？
 {
     MedicalRecords* t=records;
     while(t->next!=NULL)
     {
-        if(t->paIn==patient)
+        if(t->paIn.ID==ID)// IDfind
         {
             printf("%s %d %d\n",t->doIn.name,t->mdIn.prmd.SumDrugCost,t->mdIn.hosp.deposit);
         }
@@ -375,8 +408,10 @@ int main()
         else if(code==6)
         {
             //6 能够按照合理顺序打印某位患者的历史诊疗信息（按照患者的相关信息检索）
-             PatientInformation temp;
-            showPatientInformation(temp);
+            printf("请输入患者ID：\n");
+            int ID;
+            scanf("%d",&ID);
+            showPatientInformation(ID);
         }
         else if(code==7)
         {
