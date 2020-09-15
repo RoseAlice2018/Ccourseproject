@@ -20,12 +20,15 @@ void insertDepartment(char insertname[30])
 
 void AddMedicalRecords()
 {
-    printf("请问，选择从文件读入诊疗记录请输入1，选择手动输入诊疗记录请输入2：\n");
+    printf("请问您选择从文件读入诊疗记录请输入1，选择手动输入诊疗记录请输入2：\n");
     int tag=0;
     scanf("%d",&tag);
     if(tag==1)
     {
         // 从文件读入诊疗记录
+
+
+
     }
     else if(tag==2)// 选择手动输入诊疗记录
     {
@@ -33,12 +36,29 @@ void AddMedicalRecords()
         printf("请您按标准格式输入如下信息\n");
         printf("请您输入患者信息---格式如下：姓名 年龄 挂号\n");
         scanf("%s %d %d",temp->paIn.name,&temp->paIn.age,&temp->paIn.ID);
-        printf("请您输入医生信息---格式如下：姓名 级别 科室 工号 出诊时间（时间格式：1 Mon 2 Tue 3 Wed\n");
+        printf("请您输入医生信息---格式如下：姓名 级别 科室 工号 出诊时间（时间格式：1 Mon 2 Tue 3 Wed 默认请输入0\n");
         scanf("%s %d %s %d",temp->doIn.name,&temp->doIn.level,temp->doIn.department,&temp->doIn.ID);
+        //插入出诊时间
+        char time[20];
+        scanf("%s",time);
+        if(time[0]=='0')
+        {
+            for(int i=1;i<=7;i++)
+                {
+                    temp->doIn.date[i]=1;//1 表示在值班
+                }
+        }
+        else{
+            for(int i=0;i<7;i++)
+            {
+                if(time[i]=='\0')
+                    break;
+                int c=time[i]-'0';
+                temp->doIn.date[c]=1;
+            }
+        }
         //插入department
         insertDepartment(temp->doIn.department);
-        // 输入出诊时间
-
         //输入检查状况
         printf("请您输入诊疗情况：\n");
         printf("请您输入检查次数：如未有检查请输入0\n");
@@ -259,7 +279,7 @@ int main()
             //2 .能够随时修改 1 条诊疗记录。按照财务规范，如需修改错误的诊 疗记录，
             //应将当前错误的诊疗记录予以撤销后，再补充添加正确的诊疗记录。【重
             // 点考察】
-             MedicalRecords* t;
+            MedicalRecords* t;
             deleteRecords(t);
         }
         else if(code==3)
