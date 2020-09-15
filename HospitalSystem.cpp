@@ -227,7 +227,8 @@ void showPatient()
 int main()
 {
     while(1)
-    {
+    {    //0 System begin
+        printf("欢迎使用吉林大学计算机医院诊疗管理系统\n\t")
         printf("1:读入记录\n\t");
         printf("2:修改诊疗记录\n\t");
         printf("3:删除诊疗记录\n\t");
@@ -238,31 +239,64 @@ int main()
         printf("8:统计每位医生的出诊情况和工作繁忙程度\n\t");
         printf("9:能够打印某段时间范围内的所有诊疗信息\n\t");
         printf("10:将当前系统中的所有信息保存到文件中\n\t");
-    }
-    //0 System begin
-    //1. 能够从文件中录入多条诊疗记录，也能够随时录入 1 条诊疗记录。
-    //注意：需要考虑各种类型的不规范、不合理或错误数据，如：数据位数不对、格
-    //式不对等。【重点考察】
-    AddMedicalRecords();
-    //2 .能够随时修改 1 条诊疗记录。按照财务规范，如需修改错误的诊 疗记录，
-    //应将当前错误的诊疗记录予以撤销后，再补充添加正确的诊疗记录。【重
-    // 点考察】
-    MedicalRecords* t;
-    deleteRecords(t);
-    //3.能够随时删除 1 条诊疗记录。
-    quickdelete(t);
-    //4. 能够按照合理顺序打印某个科室的诊疗信息（按照科室检索）
-    checkDepartment();
-    //5 能够按照合理顺序打印某位医生的诊疗信息（按照医生的工号检索）
-    int ID=0;
-    showDoctor(ID);
-    //6 能够按照合理顺序打印某位患者的历史诊疗信息（按照患者的相关信息检索）
-    PatientInformation temp;
-    showPatientInformation(temp);
-    //7 能够统计医院目前的营业额（检查费用+药品费用+住院费用，不含住院押金）；能够生成目前的住院患者报表。【重点考察】
-    showProfit();
-    showPatient();
-    //8 能够统计每位医生的出诊情况和工作繁忙程度。
-    
-    //9 【某段时间范围】能够打印某段时间范围内的所有诊疗信息。【重点考察】
+        printf("0:退出系统\n\t");
+        int code;
+        scanf("%d",&code);
+        if(code==0)//退出系统
+        {
+            printf("系统正在退出\n\t");
+            break;
+        }
+        else if(code==1)
+        {
+             //1. 能够从文件中录入多条诊疗记录，也能够随时录入 1 条诊疗记录。
+            //注意：需要考虑各种类型的不规范、不合理或错误数据，如：数据位数不对、格
+            //式不对等。【重点考察】
+            AddMedicalRecords();
+        }
+        else if(code==2)
+        {
+            //2 .能够随时修改 1 条诊疗记录。按照财务规范，如需修改错误的诊 疗记录，
+            //应将当前错误的诊疗记录予以撤销后，再补充添加正确的诊疗记录。【重
+            // 点考察】
+             MedicalRecords* t;
+            deleteRecords(t);
+        }
+        else if(code==3)
+        {
+             //3.能够随时删除 1 条诊疗记录。
+                quickdelete(t);
+        }
+        else if(code==4)
+        {
+            //4. 能够按照合理顺序打印某个科室的诊疗信息（按照科室检索）
+                checkDepartment();
+        }
+        else if(code==5)
+        {
+            //5 能够按照合理顺序打印某位医生的诊疗信息（按照医生的工号检索）
+            int ID=0;
+            showDoctor(ID);
+        }
+        else if(code==6)
+        {
+            //6 能够按照合理顺序打印某位患者的历史诊疗信息（按照患者的相关信息检索）
+             PatientInformation temp;
+            showPatientInformation(temp);
+        }
+        else if(code==7)
+        {
+            //7 能够统计医院目前的营业额（检查费用+药品费用+住院费用，不含住院押金）；能够生成目前的住院患者报表。【重点考察】
+            showProfit();
+             showPatient();
+        }
+        else if(code==8)
+        {
+            //8 能够统计每位医生的出诊情况和工作繁忙程度。
+        }
+        else if(code==9)
+        {
+            //9 【某段时间范围】能够打印某段时间范围内的所有诊疗信息。【重点考察】
+        }
+    }  
 }
