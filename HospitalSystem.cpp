@@ -36,6 +36,8 @@ void AddMedicalRecords()
         printf("请您按标准格式输入如下信息\n");
         printf("请您输入患者信息---格式如下：姓名 年龄 挂号\n");
         scanf("%s %d %d",temp->paIn.name,&temp->paIn.age,&temp->paIn.ID);
+        //ID计算
+
         printf("请您输入医生信息---格式如下：姓名 级别 科室 工号 出诊时间（时间格式：1 Mon 2 Tue 3 Wed 默认请输入0\n");
         scanf("%s %d %s %d",temp->doIn.name,&temp->doIn.level,temp->doIn.department,&temp->doIn.ID);
         //插入出诊时间
