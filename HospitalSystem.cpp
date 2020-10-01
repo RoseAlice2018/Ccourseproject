@@ -14,7 +14,7 @@ void insertDepartment(char insertname[30])
             return;
         }
     }
-    RealDepartment[countDepart].name=insertname;
+   // RealDepartment[countDepart].name=insertname;
     countDepart++;
 }
 
@@ -94,8 +94,8 @@ void AddMedicalRecords()
             while(medicount--)
             {
                 printf("请您输入开药记录---格式如下：药品名称 单价 数量\n");
-                scanf("%s %d %d",temp->mdIn.prmd.drug[temp->mdIn.prmd.drugcount]->name,&temp->mdIn.prmd.drug[temp->mdIn.prmd.drugcount]->UnitPrice,&temp->mdIn.prmd.drug[temp->mdIn.prmd.drugcount]->Number);
-                 temp->mdIn.prmd.SumDrugCost+=temp->mdIn.prmd.drug[temp->mdIn.prmd.drugcount++].cost;
+                scanf("%s %d %d",temp->mdIn.prmd.drug[temp->mdIn.prmd.drugcount].name,&(temp->mdIn.prmd.drug[temp->mdIn.prmd.drugcount].UnitPrice),&(temp->mdIn.prmd.drug[temp->mdIn.prmd.drugcount].Number));
+                temp->mdIn.prmd.SumDrugCost+=temp->mdIn.prmd.drug[temp->mdIn.prmd.drugcount++].cost;
             }
             
         }
@@ -104,7 +104,7 @@ void AddMedicalRecords()
         scanf("%d/%d/%d/%d %d/%d/%d/%d %d",&temp->mdIn.hosp.beginDate.month,&temp->mdIn.hosp.beginDate.day
         ,&temp->mdIn.hosp.beginDate.hour,&temp->mdIn.hosp.beginDate.minute,&temp->mdIn.hosp.leaveDate.month,
         &temp->mdIn.hosp.leaveDate.day,&temp->mdIn.hosp.leaveDate.hour,&temp->mdIn.hosp.leaveDate.minute,&temp->mdIn.hosp.deposit);
-        if(temp->mdIn.hosp.deposit<temp->mdIn.hosp.leaveDate)
+        if(temp->mdIn.hosp.deposit < temp->mdIn.hosp.leastdeposit)
         {
             printf("您的押金不足");
         }
@@ -155,7 +155,7 @@ void showRecordsAccordingtoDepartment()
                 {
                     printf("医生姓名：%s 医生级别：%d 医生所属部门：%s 医生工号：%d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
                     //打印出诊时间
-                    printf("医生出诊时间：")
+                    printf("医生出诊时间：");
                     for(int i=1;i<=7;i++)
                     {
                         if(t->doIn.date[i]==1)
@@ -183,7 +183,7 @@ void showRecordsAccordingtoDepartment()
                     //1
                     printf("医生姓名：%s 医生级别：%d 医生所属部门：%s 医生工号：%d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
                     //打印出诊时间
-                    printf("医生出诊时间：")
+                    printf("医生出诊时间：");
                     for(int i=1;i<=7;i++)
                     {
                         if(t->doIn.date[i]==1)
@@ -241,7 +241,7 @@ void showDoctor(int inID)
                 {
                     printf("医生姓名：%s 医生级别：%d 医生所属部门：%s 医生工号：%d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
                     //打印出诊时间
-                    printf("医生出诊时间：")
+                    printf("医生出诊时间：");
                     for(int i=1;i<=7;i++)
                     {
                         if(t->doIn.date[i]==1)
@@ -269,7 +269,7 @@ void showDoctor(int inID)
                     //1
                     printf("医生姓名：%s 医生级别：%d 医生所属部门：%s 医生工号：%d\n",t->doIn.name,t->doIn.level,t->doIn.department,t->doIn.ID);
                     //打印出诊时间
-                    printf("医生出诊时间：")
+                    printf("医生出诊时间：");
                     for(int i=1;i<=7;i++)
                     {
                         if(t->doIn.date[i]==1)
@@ -333,7 +333,7 @@ int main()
 {
     while(1)
     {    //0 System begin
-        printf("欢迎使用吉林大学计算机医院诊疗管理系统\n\t")
+        printf("欢迎使用吉林大学计算机医院诊疗管理系统\n\t");
         printf("1:读入记录\n\t");
         printf("2:修改诊疗记录\n\t");
         printf("3:删除诊疗记录\n\t");
