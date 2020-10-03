@@ -1,3 +1,6 @@
+
+
+
 struct PatientInformation
 {
     char name[30];// name of the patient
