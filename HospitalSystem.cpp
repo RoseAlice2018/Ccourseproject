@@ -36,7 +36,7 @@ void AddMedicalRecords()
         printf("请您按标准格式输入如下信息\n");
         printf("请您输入患者信息---格式如下：姓名 年龄 挂号\n");
         scanf("%s %d %d",temp->paIn.name,&temp->paIn.age,&temp->paIn.ID);
-        //ID计算
+        //ID计算 
         printf("请您输入医生信息---格式如下：姓名 级别 科室 工号 出诊时间（时间格式：1 Mon 2 Tue 3 Wed 默认请输入0\n");
         scanf("%s %d %s %d",temp->doIn.name,&temp->doIn.level,temp->doIn.department,&temp->doIn.ID);
         //插入出诊时间
@@ -357,7 +357,7 @@ void showPatientInformation(const int ID)//? 历史记录？
         if(t->paIn.ID==ID)// IDfind
         {
             printf("患者姓名：%s 患者药物总花费：%d 患者住院押金：%d\n",t->doIn.name,t->mdIn.prmd.SumDrugCost,t->mdIn.hosp.deposit);
-            
+
         }
     }
 }
