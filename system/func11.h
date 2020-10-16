@@ -17,16 +17,16 @@ void loop1(MedicalRecords* temp)
 	print();
 	printf("\n");
 	
-    printf("ÇëÄúÊäÈë»¼ÕßÐÅÏ¢---¸ñÊ½ÈçÏÂ£ºÐÕÃû ÄêÁä ¹ÒºÅ\n");
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë»¼ï¿½ï¿½ï¿½ï¿½Ï¢---ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Òºï¿½\n");
     char patientinformation[100];
     gets(patientinformation);
     if(sscanf(patientinformation,"%s %d %d",temp->paIn.name,&temp->paIn.age,&temp->paIn.ID)==3)
     {
-        //ÊäÈëÕýÈ·ÎÞÎó
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½
     }
     else
     {
-        printf("ÄúµÄÊäÈëÓÐ´íÎó£¡ ÇëÖØÐÂÊäÈë£¡\n");
+        printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡\n");
         Sleep(1000);
 		loop1(temp);
     }
@@ -36,7 +36,7 @@ void loop2(MedicalRecords* temp)
 	print();
 	printf("\n");
 	
-	printf("ÇëÄúÊäÈëÒ½ÉúÐÅÏ¢---¸ñÊ½ÈçÏÂ£ºÐÕÃû ¼¶±ð ¿ÆÊÒ ¹¤ºÅ \n");
+	printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ï¿½Ï¢---ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ \n");
     char doctorinformation[200];
     gets(doctorinformation);
     if(sscanf(doctorinformation,"%s %d %s %d",temp->doIn.name,&temp->doIn.level,temp->doIn.department,&temp->doIn.ID)==4)
@@ -45,20 +45,20 @@ void loop2(MedicalRecords* temp)
     }
     else
     {
-        printf("ÄúµÄÊäÈë´íÎó£¡ÇëÖØÐÂÊäÈë£¡\n");
+        printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡\n");
         Sleep(1000);
         loop2(temp);
     }
     
-    //²åÈë³öÕïÊ±¼ä
-    printf("ÇëÄúÊäÈë³öÕïÊ±¼ä£ºÊ±¼ä¸ñÊ½£º1(ÖÜÒ») 2(ÖÜ¶þ)... Ä¬ÈÏÇëÊäÈë0\n");
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£ºÊ±ï¿½ï¿½ï¿½Ê½ï¿½ï¿½1(ï¿½ï¿½Ò») 2(ï¿½Ü¶ï¿½)... Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0\n");
     char time[20];
     scanf("%s",time);
     if(time[0]=='0')
     {
         for(int i=1;i<=7;i++)
             {
-                temp->doIn.date[i]=1;//1 ±íÊ¾ÔÚÖµ°à
+                temp->doIn.date[i]=1;//1 ï¿½ï¿½Ê¾ï¿½ï¿½Öµï¿½ï¿½
             }
     }
     else{
@@ -70,7 +70,7 @@ void loop2(MedicalRecords* temp)
             temp->doIn.date[c]=1;
         }
     }
-    //²åÈëdepartment
+    //ï¿½ï¿½ï¿½ï¿½department
     insertDepartment(temp->doIn.department);
 }
 void loop4(MedicalRecords* temp)
@@ -80,7 +80,7 @@ void loop4(MedicalRecords* temp)
     gets(cc);
     if(sscanf(cc,"%d",&c)==1);
     else{
-        printf("ÄúµÄÊäÈë´íÎó£¡ÇëÖØÐÂÊäÈë£¡\n");
+        printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡\n");
         Sleep(1000);
         loop4(temp);
     }
@@ -92,26 +92,26 @@ void loop3(MedicalRecords* temp)
 	print();
 	printf("\n");
 	
-	printf("ÇëÄúÊäÈëÕïÁÆÇé¿ö£º\n");
-    printf("ÇëÄúÊäÈë¼ì²é´ÎÊý£ºÈçÎ´ÓÐ¼ì²éÇëÊäÈë0\n");
+	printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0\n");
     int checkNumber=0;
     char checknumber[10];
     gets(checknumber);
     if(sscanf(checknumber,"%d",&checkNumber)==1);
     else{
-        printf("ÄúµÄÊäÈë´íÎó£¡ÇëÖØÐÂÊäÈë£¡\n");
+        printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡\n");
         Sleep(1000);
         loop3(temp);
     }
     if(checkNumber==0)
     {
-        printf("ÄúÎ´ÓÐ¼ì²é¼ÇÂ¼\n");
+        printf("ï¿½ï¿½Î´ï¿½Ð¼ï¿½ï¿½ï¿½Â¼\n");
     }
     else
     {
         while (checkNumber--)
         {
-        	printf("ÇëÒÀ´ÎÊäÈëÃ¿´Î¼ì²é·ÑÓÃ---¸ñÊ½ÈçÏÂ£º100 \n");
+        	printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½---ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Â£ï¿½100 \n");
            	loop4(temp);
         }  
     }
@@ -121,12 +121,12 @@ void loop6(MedicalRecords* temp)
 	print();
 	printf("\n");
 	
-	printf("ÇëÄúÊäÈë¿ªÒ©¼ÇÂ¼---¸ñÊ½ÈçÏÂ£ºÒ©Æ·Ãû³Æ µ¥¼Û ÊýÁ¿\n");
+	printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¿ªÒ©ï¿½ï¿½Â¼---ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Â£ï¿½Ò©Æ·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½\n");
     char medi[200];
     gets(medi);
     if(sscanf(medi,"%s %d %d",temp->mdIn.prmd.drug[temp->mdIn.prmd.drugcount].name,&(temp->mdIn.prmd.drug[temp->mdIn.prmd.drugcount].UnitPrice),&(temp->mdIn.prmd.drug[temp->mdIn.prmd.drugcount].Number))==3);
     else{
-        printf("ÄúµÄÊäÈë´íÎó£¡ÇëÖØÐÂÊäÈë£¡\n");
+        printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡\n");
         Sleep(1000);
         loop6(temp);
     }
@@ -137,19 +137,19 @@ void loop5(MedicalRecords* temp)
 	print();
 	printf("\n");
 	
-	printf("ÇëÄúÊäÈë¿ªÒ©´ÎÊý£ºÈçÎ´Ôø¿ªÒ©£¬ÇëÊäÈë0\n");
+	printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¿ªÒ©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½Ò©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0\n");
     int medicount;
     char medicount1[100];
     gets(medicount1);
     if(sscanf(medicount1,"%d",&medicount)==1);
     else{
-        printf("ÄúµÄÊäÈë´íÎó£¡ÇëÖØÐÂÊäÈë£¡\n");
+        printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡\n");
         Sleep(1000);
         loop5(temp);
     }
     if(medicount==0)
     {
-        printf("ÄúÎ´ÔøÓÐ¿ªÒ©¼ÇÂ¼.\n");
+        printf("ï¿½ï¿½Î´ï¿½ï¿½ï¿½Ð¿ï¿½Ò©ï¿½ï¿½Â¼.\n");
     }
     else
     {
@@ -165,24 +165,24 @@ void loop7(MedicalRecords* temp)
 	print();
 	printf("\n");
 	
-	printf("ÇëÄúÊäÈë×¡Ôº¼ÇÂ¼---¸ñÊ½ÈçÏÂ£º£¨×¡Ôº¿ªÊ¼¼ÇÂ¼£©ÔÂ/ÈÕ/Ê±/·Ö £¨Ô¤ÆÚ³öÔºÈÕÆÚ£©ÔÂ/ÈÕ/Ê±/·Ö ×¡ÔºÑº½ð\n");
+	printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡Ôºï¿½ï¿½Â¼---ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½×¡Ôºï¿½ï¿½Ê¼ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½/Ê±/ï¿½ï¿½ ï¿½ï¿½Ô¤ï¿½Ú³ï¿½Ôºï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½/ï¿½ï¿½/Ê±/ï¿½ï¿½ ×¡ÔºÑºï¿½ï¿½\n");
     char hospitalr[200];
     gets(hospitalr);
     if(sscanf(hospitalr,"%d/%d/%d/%d %d/%d/%d/%d %d",&temp->mdIn.hosp.beginDate.month,&temp->mdIn.hosp.beginDate.day
     ,&temp->mdIn.hosp.beginDate.hour,&temp->mdIn.hosp.beginDate.minute,&temp->mdIn.hosp.leaveDate.month,
     &temp->mdIn.hosp.leaveDate.day,&temp->mdIn.hosp.leaveDate.hour,&temp->mdIn.hosp.leaveDate.minute,&temp->mdIn.hosp.deposit)==9);
     else{
-        printf("ÄúµÄÊäÈë´íÎó£¡ÇëÖØÐÂÊäÈë£¡\n");
+        printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡\n");
         Sleep(1000);
         loop7(temp);
     }
     if(temp->mdIn.hosp.deposit < temp->mdIn.hosp.leastdeposit)
     {
-        printf("ÄúµÄÑº½ð²»×ã");
+        printf("ï¿½ï¿½ï¿½ï¿½Ñºï¿½ï¿½ï¿½ï¿½");
     }
     else if(temp->mdIn.hosp.deposit<temp->mdIn.hosp.deposit)
     {
-        printf("ÄúµÄÑº½ðµÍÓÚ×îµÍ±ê×¼");
+        printf("ï¿½ï¿½ï¿½ï¿½Ñºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í±ï¿½×¼");
     } 
 }
 void AddMedicalRecords()
@@ -206,13 +206,13 @@ void func1()
 {
     char a[10];
     print();
-    printf("\t\t\t\t     ¡ïÇëÑ¡Ôñ¹¦ÄÜ¡ï\n\n\t\t\t\t      ¢Ù ´ÓÎÄ¼þÂ¼ÈëÕïÁÆ¼ÇÂ¼\n\n\t\t\t\t      ¢Ú ÊÖ¶¯Â¼ÈëÒ»ÌõÕïÁÆ¼ÇÂ¼\n\n\t\t\t\t      ¢Û ·µ»ØÉÏÒ»¼¶\n\n\t\t\t\t");
-    printf("\n\t\t\t\t      ÇëÑ¡Ôñ£º");
+    printf("\t\t\t\t     ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ü¡ï¿½\n\n\t\t\t\t      ï¿½ï¿½ ï¿½ï¿½ï¿½Ä¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½Â¼\n\n\t\t\t\t      ï¿½ï¿½ ï¿½Ö¶ï¿½Â¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½Â¼\n\n\t\t\t\t      ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½\n\n\t\t\t\t");
+    printf("\n\t\t\t\t      ï¿½ï¿½Ñ¡ï¿½ï¿½");
     scanf("%s",a);
     printf("\n");
     if(strlen(a)!=1)
     {
-        printf("\n\t\t\t\t   ¡Á ÄúÊäÈë¸ñÊ½´íÎó£¬ÇëÖØÐÂÊäÈë£¡\n");
+        printf("\n\t\t\t\t   ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡\n");
         Sleep(1000);
         func1();
     }
@@ -227,7 +227,7 @@ void func1()
 	}
     else
     {
-            printf("\n\t\t\t\t   ¡Á ÊäÈë´íÎó£¬ÇëÖØÐÂÊäÈë!\n");
+            printf("\n\t\t\t\t   ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!\n");
             Sleep(1000);
             func1();
     }

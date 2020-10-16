@@ -10,7 +10,7 @@
 #include"func4.h"
 #include"func6.h"
 #include"option.h"
-
+#include"func11.h"
 int main()
 {
 	option(); 
