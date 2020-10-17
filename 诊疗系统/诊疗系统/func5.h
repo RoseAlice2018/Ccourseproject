@@ -1,11 +1,11 @@
 
 void func5()
 {
-	FILE* fpwirte=fopen("data.txt","W");
-    if(fpwirte==NULL)
-    {
-        return;
-    }
+    int a;
+    //printf("did it");
+    //scanf("%d ",&a);
+	FILE* fpwirte=fopen("./data.txt","w");
+
     MedicalRecords* t=records->next;
     while(t!=NULL)
     {
@@ -45,6 +45,7 @@ void func5()
         fprintf(fpwirte,"%d/%d/%d/%d\n",t->mdIn.hosp.leaveDate.month,t->mdIn.hosp.leaveDate.day,t->mdIn.hosp.leaveDate.hour,t->mdIn.hosp.leaveDate.minute);
         t=t->next;        
     }
+    fclose(fpwirte);
     printf("Output Over");
     option();
 }
