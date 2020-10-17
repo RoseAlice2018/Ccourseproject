@@ -46,4 +46,5 @@ void print()//组合页面
 }
 
 void option(); //声明 
-void option1(); 
+void option1();
+void option1_2();

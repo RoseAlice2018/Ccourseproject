@@ -1,9 +1,9 @@
-ï»¿
-void showProfit() // ç»Ÿè®¡åŒ»é™¢ç›®å‰çš„è¥ä¸šé¢
+
+void showProfit() // Í³¼ÆÒ½ÔºÄ¿Ç°µÄÓªÒµ¶î
 {
 	MedicalRecords* t = records;
 	int Profit = 0;
-	/*******ç³»ç»Ÿæ—¶é—´********/
+	/*******ÏµÍ³Ê±¼ä********/
 	time_t T;
 	struct tm* p;
 	time(&T);
@@ -13,9 +13,9 @@ void showProfit() // ç»Ÿè®¡åŒ»é™¢ç›®å‰çš„è¥ä¸šé¢
 	{
 		t = t->next;
 		int hospcost = 0;
-		//	if (p->tm_hour < 8)	//ä½é™¢è´¹ 
+		//	if (p->tm_hour < 8)	//×¡Ôº·Ñ 
 		//	{
-		if (t->mdIn.hosp.leaveDate.month > (p->tm_mon + 1) ||//å°šæœªå‡ºé™¢æˆ–ä»Šæ—¥8ç‚¹ä¹‹å‰å·²å‡ºé™¢
+		if (t->mdIn.hosp.leaveDate.month > (p->tm_mon + 1) ||//ÉĞÎ´³öÔº»ò½ñÈÕ8µãÖ®Ç°ÒÑ³öÔº
 			t->mdIn.hosp.leaveDate.month == (p->tm_mon + 1) && t->mdIn.hosp.leaveDate.day >= p->tm_mday)
 		{
 			if (p->tm_hour < 8)
@@ -28,7 +28,7 @@ void showProfit() // ç»Ÿè®¡åŒ»é™¢ç›®å‰çš„è¥ä¸šé¢
 					hospcost = 200 * (p->tm_mday - t->mdIn.hosp.beginDate.day + 1);
 			}
 		}
-		else//æ˜¨å¤©ä¹‹å‰å‡ºé™¢
+		else//×òÌìÖ®Ç°³öÔº
 		{
 			if (t->mdIn.hosp.beginDate.month == t->mdIn.hosp.leaveDate.month)
 				hospcost = 200 * (t->mdIn.hosp.leaveDate.day - t->mdIn.hosp.beginDate.day);
@@ -69,19 +69,19 @@ void showProfit() // ç»Ÿè®¡åŒ»é™¢ç›®å‰çš„è¥ä¸šé¢
 
 	print();
 	printf("\n");
-	printf("åŒ»é™¢ç›®å‰çš„è¥ä¸šé¢ä¸ºï¼š%d å…ƒ\n", Profit);
-	printf("æŒ‰å›è½¦é”®ç»§ç»­");
+	printf("Ò½ÔºÄ¿Ç°µÄÓªÒµ¶îÎª£º%d Ôª\n", Profit);
+	printf("°´»Ø³µ¼ü¼ÌĞø");
 	char ch;
 	while ((ch = getchar()) != '\n' && ch != EOF);
 	getchar();
 
 }
 
-void showPatientForm() // ç”Ÿæˆç›®å‰ä½é™¢æ‚£è€…è¡¨ 
+void showPatientForm() // Éú³ÉÄ¿Ç°×¡Ôº»¼Õß±í 
 {
 	print();
 	printf("\n");
-	/*******ç³»ç»Ÿæ—¶é—´********/
+	/*******ÏµÍ³Ê±¼ä********/
 	time_t T;
 	struct tm* p;
 	time(&T);
@@ -92,7 +92,7 @@ void showPatientForm() // ç”Ÿæˆç›®å‰ä½é™¢æ‚£è€…è¡¨
 	while (t->next != NULL)
 	{
 		t = t->next;
-		//å‡ºé™¢æ—¶é—´å¤§äºå½“å‰æ—¶é—´
+		//³öÔºÊ±¼ä´óÓÚµ±Ç°Ê±¼ä
 		if (t->mdIn.hosp.leaveDate.month > (p->tm_mon + 1) ||
 			t->mdIn.hosp.leaveDate.month == (p->tm_mon + 1) && t->mdIn.hosp.leaveDate.day > p->tm_mday ||
 			t->mdIn.hosp.leaveDate.month == (p->tm_mon + 1) && t->mdIn.hosp.leaveDate.day == p->tm_mday &&
@@ -100,12 +100,12 @@ void showPatientForm() // ç”Ÿæˆç›®å‰ä½é™¢æ‚£è€…è¡¨
 			t->mdIn.hosp.leaveDate.month == (p->tm_mon + 1) && t->mdIn.hosp.leaveDate.day == p->tm_mday &&
 			t->mdIn.hosp.leaveDate.hour == p->tm_hour && t->mdIn.hosp.leaveDate.minute > p->tm_min)
 		{
-			printf("æ‚£è€…å§“åï¼š%s  æŒ‚å·ï¼š%s\n", t->paIn.name, t->paIn.ID);
-			printf("ä½é™¢å¼€å§‹æ—¥æœŸï¼š%d/%d/%d/%d\n", t->mdIn.hosp.beginDate.month, t->mdIn.hosp.beginDate.day, t->mdIn.hosp.beginDate.hour, t->mdIn.hosp.beginDate.minute);
-			printf("ä½é™¢é¢„æœŸç»“æŸæ—¥æœŸ: %d/%d/%d/%d\n", t->mdIn.hosp.leaveDate.month, t->mdIn.hosp.leaveDate.day, t->mdIn.hosp.leaveDate.hour, t->mdIn.hosp.leaveDate.minute);
+			printf("»¼ÕßĞÕÃû£º%s  ¹ÒºÅ£º%s\n", t->paIn.name, t->paIn.ID);
+			printf("×¡Ôº¿ªÊ¼ÈÕÆÚ£º%d/%d/%d/%d\n", t->mdIn.hosp.beginDate.month, t->mdIn.hosp.beginDate.day, t->mdIn.hosp.beginDate.hour, t->mdIn.hosp.beginDate.minute);
+			printf("×¡ÔºÔ¤ÆÚ½áÊøÈÕÆÚ: %d/%d/%d/%d\n", t->mdIn.hosp.leaveDate.month, t->mdIn.hosp.leaveDate.day, t->mdIn.hosp.leaveDate.hour, t->mdIn.hosp.leaveDate.minute);
 		}
 		int hospcost = 0;
-		if (t->mdIn.hosp.leaveDate.month > (p->tm_mon + 1) ||//å°šæœªå‡ºé™¢æˆ–ä»Šæ—¥8ç‚¹ä¹‹å‰å·²å‡ºé™¢
+		if (t->mdIn.hosp.leaveDate.month > (p->tm_mon + 1) ||//ÉĞÎ´³öÔº»ò½ñÈÕ8µãÖ®Ç°ÒÑ³öÔº
 			t->mdIn.hosp.leaveDate.month == (p->tm_mon + 1) && t->mdIn.hosp.leaveDate.day >= p->tm_mday)
 		{
 			if (p->tm_hour < 8)
@@ -120,7 +120,7 @@ void showPatientForm() // ç”Ÿæˆç›®å‰ä½é™¢æ‚£è€…è¡¨
 
 		}
 
-		//if (p->tm_hour < 8)	//ä½é™¢è´¹ 
+		//if (p->tm_hour < 8)	//×¡Ôº·Ñ 
 		//{
 		//	hospcost = 200 * (p->tm_mday - 1 - t->mdIn.hosp.beginDate.day + 1);
 		//}
@@ -128,12 +128,12 @@ void showPatientForm() // ç”Ÿæˆç›®å‰ä½é™¢æ‚£è€…è¡¨
 		//{
 		//	hospcost = 200 * (p->tm_mday - t->mdIn.hosp.beginDate.day + 1);
 		//}
-		printf("å½“å‰å‰©ä½™æŠ¼é‡‘ï¼š%d", t->mdIn.hosp.deposit - hospcost);
+		printf("µ±Ç°Ê£ÓàÑº½ğ£º%d", t->mdIn.hosp.deposit - hospcost);
 		if (t->mdIn.hosp.deposit - hospcost < 1000)
-			printf("ï¼ˆæŠ¼é‡‘ä¸è¶³ï¼Œè¯¥æ‚£è€…éœ€è¦ç¼´çº³æŠ¼é‡‘ï¼‰");
+			printf("£¨Ñº½ğ²»×ã£¬¸Ã»¼ÕßĞèÒª½ÉÄÉÑº½ğ£©");
 		printf("\n");
 	}
-	printf("æŒ‰å›è½¦é”®ç»§ç»­");
+	printf("°´»Ø³µ¼ü¼ÌĞø");
 	char ch;
 	while ((ch = getchar()) != '\n' && ch != EOF);
 	getchar();
@@ -151,14 +151,14 @@ void showDoctorWorkingStatus()
 	while (t->next != NULL)
 	{
 		t = t->next;
-		if (t->doIn.ID != 0)//åŒ»ç”Ÿä¿¡æ¯æœ‰æ•ˆ
+		if (t->doIn.ID != 0)//Ò½ÉúĞÅÏ¢ÓĞĞ§
 		{
 			isnull = 1;
 			print();
 			printf("\n");
 			docnum++;
-			printf("%d.åŒ»ç”Ÿå·¥å·ï¼š%s å§“åï¼š%s çº§åˆ«ï¼š%s æ‰€å±éƒ¨é—¨ï¼š%s\n", docnum, t->doIn.ID, t->doIn.name, t->doIn.level, t->doIn.department);
-			printf(" åŒ»ç”Ÿå‡ºè¯Šæ—¶é—´ï¼š");
+			printf("%d.Ò½Éú¹¤ºÅ£º%s ĞÕÃû£º%s ¼¶±ğ£º%s ËùÊô²¿ÃÅ£º%s\n", docnum, t->doIn.ID, t->doIn.name, t->doIn.level, t->doIn.department);
+			printf(" Ò½Éú³öÕïÊ±¼ä£º");
 			int workdays = 0;
 			int onwork = 0;
 			for (int i = 1; i <= 7; i++)
@@ -187,22 +187,22 @@ void showDoctorWorkingStatus()
 				}
 
 			}
-			printf(" åŒ»ç”Ÿæ˜¯å¦æ­£åœ¨åè¯Šï¼š");
+			printf(" Ò½ÉúÊÇ·ñÕıÔÚ×øÕï£º");
 			if (onwork == 1)
-				printf("æ˜¯");
+				printf("ÊÇ");
 			else
-				printf("å¦");
-			printf("    åŒ»ç”Ÿå·¥ä½œå¤©æ•°ï¼š%d\n\n", workdays);
+				printf("·ñ");
+			printf("    Ò½Éú¹¤×÷ÌìÊı£º%d\n\n", workdays);
 
 
 		}
 		//t = t->next;
 	}
 	if (isnull == 0)
-		printf("å½“å‰æ— åŒ»ç”Ÿå‡ºè¯Šä¿¡æ¯\n");
+		printf("µ±Ç°ÎŞÒ½Éú³öÕïĞÅÏ¢\n");
 	fflush(stdin);
 	getchar();
-	printf("æŒ‰å›è½¦é”®ç»§ç»­\n");
+	printf("°´»Ø³µ¼ü¼ÌĞø\n");
 	fflush(stdin);
 	int w = getchar();
 	fflush(stdin);
@@ -216,7 +216,7 @@ void getquerytime(Date* querytime)
 	if (sscanf(time, "%d/%d/%d/%d",
 		&querytime->month, &querytime->day, &querytime->hour, &querytime->minute) == 4);
 	else {
-		printf("æ‚¨çš„è¾“å…¥é”™è¯¯ï¼è¯·é‡æ–°è¾“å…¥ï¼\n");
+		printf("ÄúµÄÊäÈë´íÎó£¡ÇëÖØĞÂÊäÈë£¡\n");
 		Sleep(1000);
 		getquerytime(querytime);
 	}
@@ -224,7 +224,7 @@ void getquerytime(Date* querytime)
 }
 void showMedicalInfoinPeriods()
 {
-	/*******ç³»ç»Ÿæ—¶é—´********/
+	/*******ÏµÍ³Ê±¼ä********/
 	time_t T;
 	struct tm* p;
 	time(&T);
@@ -236,9 +236,9 @@ void showMedicalInfoinPeriods()
 	print();
 	printf("\n");
 
-	printf("è¯·è¾“å…¥æŸ¥è¯¢èµ·å§‹æ—¶é—´---æ ¼å¼å¦‚ä¸‹ï¼šæœˆ/æ—¥/æ—¶/åˆ†\n");
+	printf("ÇëÊäÈë²éÑ¯ÆğÊ¼Ê±¼ä---¸ñÊ½ÈçÏÂ£ºÔÂ/ÈÕ/Ê±/·Ö\n");
 	getquerytime(starttime);
-	printf("è¯·è¾“å…¥æŸ¥è¯¢æˆªè‡³æ—¶é—´---æ ¼å¼å¦‚ä¸‹ï¼šæœˆ/æ—¥/æ—¶/åˆ†\n");
+	printf("ÇëÊäÈë²éÑ¯½ØÖÁÊ±¼ä---¸ñÊ½ÈçÏÂ£ºÔÂ/ÈÕ/Ê±/·Ö\n");
 	getquerytime(endtime);
 
 	int recordnum = 0;
@@ -372,10 +372,10 @@ void showMedicalInfoinPeriods()
 		if (medinotnull || examnotnull || hospnotnull == 1)
 		{
 			recordnum++;
-			printf("%d.æ‚£è€…å§“åï¼š%s  ç¼–å·ï¼š%s  å¹´é¾„ï¼š%d\n", recordnum, t->paIn.name, t->paIn.ID, t->paIn.age);
+			printf("%d.»¼ÕßĞÕÃû£º%s  ±àºÅ£º%s  ÄêÁä£º%d\n", recordnum, t->paIn.name, t->paIn.ID, t->paIn.age);
 			if (medinotnull == 1)
 			{
-				printf(" å¼€è¯ä¿¡æ¯ï¼š\n");
+				printf(" ¿ªÒ©ĞÅÏ¢£º\n");
 				for (int i = 0; i < t->mdIn.prmd.drugcount; i++)
 				{
 					if ((t->mdIn.prmd.drug[i].prescribetime.month > starttime->month ||
@@ -400,7 +400,7 @@ void showMedicalInfoinPeriods()
 							&& t->mdIn.prmd.drug[i].prescribetime.hour == endtime->hour
 							&& t->mdIn.prmd.drug[i].prescribetime.minute < endtime->minute))
 					{
-						printf("  å¼€è¯æ—¶é—´ï¼š%dæœˆ%dæ—¥%dæ—¶%dåˆ†  è¯å“åç§°ï¼š%s  å¼€è¯æ•°é‡ï¼š%d  è¯å“è´¹ç”¨ï¼š%d  \n",
+						printf("  ¿ªÒ©Ê±¼ä£º%dÔÂ%dÈÕ%dÊ±%d·Ö  Ò©Æ·Ãû³Æ£º%s  ¿ªÒ©ÊıÁ¿£º%d  Ò©Æ··ÑÓÃ£º%d  \n",
 							t->mdIn.prmd.drug[i].prescribetime.month, t->mdIn.prmd.drug[i].prescribetime.day,
 							t->mdIn.prmd.drug[i].prescribetime.hour, t->mdIn.prmd.drug[i].prescribetime.minute,
 							t->mdIn.prmd.drug[i].name, t->mdIn.prmd.drug[i].Number, t->mdIn.prmd.drug[i].Price);
@@ -409,7 +409,7 @@ void showMedicalInfoinPeriods()
 			}
 			if (examnotnull == 1)
 			{
-				printf(" æ£€æŸ¥ä¿¡æ¯ï¼š\n");
+				printf(" ¼ì²éĞÅÏ¢£º\n");
 				for (int i = 0; i < t->mdIn.exam.examcount; i++)
 				{
 					if ((t->mdIn.exam.examproj[i].examtime.month > starttime->month ||
@@ -434,7 +434,7 @@ void showMedicalInfoinPeriods()
 							&& t->mdIn.exam.examproj[i].examtime.hour == endtime->hour
 							&& t->mdIn.exam.examproj[i].examtime.minute < endtime->minute))
 					{
-						printf("  æ£€æŸ¥æ—¶é—´ï¼š%dæœˆ%dæ—¥%dæ—¶%dåˆ†  æ£€æŸ¥è´¹ç”¨ï¼š%d \n",
+						printf("  ¼ì²éÊ±¼ä£º%dÔÂ%dÈÕ%dÊ±%d·Ö  ¼ì²é·ÑÓÃ£º%d \n",
 							t->mdIn.exam.examproj[i].examtime.month, t->mdIn.exam.examproj[i].examtime.day,
 							t->mdIn.exam.examproj[i].examtime.hour, t->mdIn.exam.examproj[i].examtime.minute,
 							t->mdIn.exam.examproj[i].examcost);
@@ -443,16 +443,16 @@ void showMedicalInfoinPeriods()
 			}
 			if (hospnotnull == 1)
 			{
-				printf(" ä½é™¢ä¿¡æ¯ï¼š\n");
+				printf(" ×¡ÔºĞÅÏ¢£º\n");
 				if (beginhosp == 1)
 				{
-					printf("  å…¥é™¢æ—¶é—´ï¼š%dæœˆ%dæ—¥%dæ—¶%dåˆ†\n",
+					printf("  ÈëÔºÊ±¼ä£º%dÔÂ%dÈÕ%dÊ±%d·Ö\n",
 						t->mdIn.hosp.beginDate.month, t->mdIn.hosp.beginDate.day,
 						t->mdIn.hosp.beginDate.hour, t->mdIn.hosp.beginDate.minute);
 				}
 				if (leavehosp == 1)
 				{
-					printf("  å‡ºé™¢æ—¶é—´ï¼š%dæœˆ%dæ—¥%dæ—¶%dåˆ†\n",
+					printf("  ³öÔºÊ±¼ä£º%dÔÂ%dÈÕ%dÊ±%d·Ö\n",
 						t->mdIn.hosp.leaveDate.month, t->mdIn.hosp.leaveDate.day,
 						t->mdIn.hosp.leaveDate.hour, t->mdIn.hosp.leaveDate.minute);
 
@@ -463,8 +463,8 @@ void showMedicalInfoinPeriods()
 
 	}
 	if (recordnum == 0)
-		printf("è¯¥æ—¶é—´æ®µå†…æš‚æ— è¯Šç–—ä¿¡æ¯\n");
-	printf("æŒ‰å›è½¦é”®ç»§ç»­\n");
+		printf("¸ÃÊ±¼ä¶ÎÄÚÔİÎŞÕïÁÆĞÅÏ¢\n");
+	printf("°´»Ø³µ¼ü¼ÌĞø\n");
 	getchar();
 
 }
@@ -475,13 +475,13 @@ void func4()
 	while (1)
 	{
 		print();
-		printf("\t\t\t\t     â˜…è¯·é€‰æ‹©åŠŸèƒ½â˜…\n\n\t\t\t\t      â‘  ç»Ÿè®¡åŒ»é™¢ç›®å‰è¥ä¸šé¢\n\n\t\t\t\t      â‘¡ ç”Ÿæˆä½é™¢æ‚£è€…æŠ¥è¡¨\n\n\t\t\t\t      â‘¢ ç»Ÿè®¡åŒ»ç”Ÿçš„å‡ºè¯Šæƒ…å†µ\n\n\t\t\t\t      â‘£ æ‰“å°æŸæ®µæ—¶é—´èŒƒå›´å†…çš„æ‰€æœ‰è¯Šç–—ä¿¡æ¯\n\n\t\t\t\t      â‘¤ è¿”å›ä¸Šä¸€çº§\n\n\t\t\t\t");
-		printf("\n\t\t\t\t      è¯·é€‰æ‹©ï¼š");
+		printf("\t\t\t\t     ¡ïÇëÑ¡Ôñ¹¦ÄÜ¡ï\n\n\t\t\t\t      ¢Ù Í³¼ÆÒ½ÔºÄ¿Ç°ÓªÒµ¶î\n\n\t\t\t\t      ¢Ú Éú³É×¡Ôº»¼Õß±¨±í\n\n\t\t\t\t      ¢Û Í³¼ÆÒ½ÉúµÄ³öÕïÇé¿ö\n\n\t\t\t\t      ¢Ü ´òÓ¡Ä³¶ÎÊ±¼ä·¶Î§ÄÚµÄËùÓĞÕïÁÆĞÅÏ¢\n\n\t\t\t\t      ¢İ ·µ»ØÉÏÒ»¼¶\n\n\t\t\t\t");
+		printf("\n\t\t\t\t      ÇëÑ¡Ôñ£º");
 		scanf("%s", a);
 		printf("\n");
 		if (strlen(a) != 1)
 		{
-			printf("\n\t\t\t\t   Ã— æ‚¨è¾“å…¥æ ¼å¼é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
+			printf("\n\t\t\t\t   ¡Á ÄúÊäÈë¸ñÊ½´íÎó£¬ÇëÖØĞÂÊäÈë£¡\n");
 			Sleep(1000);
 			func4();
 		}
@@ -500,9 +500,10 @@ void func4()
 		}
 		else
 		{
-			printf("\n\t\t\t\t   Ã— è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥!\n");
+			printf("\n\t\t\t\t   ¡Á ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë!\n");
 			Sleep(1000);
 			func4();
 		}
 	}
 }
+

@@ -1,17 +1,17 @@
 
 typedef struct PatientInformation
 {
-    char name[30];// name of the patient
+    char name[40];// name of the patient
     int age;    // age of the patient (1-140)
-    char ID[30];     // ID of the patient (Uniqueness)
+    char ID[40];     // ID of the patient (Uniqueness)
 }PatientInformation;
 
 typedef struct DoctorInformation
 {
-    char name[30];// name of the doctor
-    char  level[30]; //level of the doctor
-    char department[30]; //department of the doctor
-    char ID[30];     //ID of the doctor(Uniqueness)
+    char name[40];// name of the doctor
+    char  level[40]; //level of the doctor
+    char department[40]; //department of the doctor
+    char ID[40];     //ID of the doctor(Uniqueness)
     int date[8];   // doctor at work
 }DoctorInformation;
 
@@ -56,9 +56,8 @@ typedef struct Hospitalized
 {
     Date beginDate;
     Date leaveDate;
-    int   Cost;
-    int  deposit;
-    int  min;   
+    int  Cost;
+    int  deposit;  
 }Hospitalized;
 
 typedef struct MedicalInformation
